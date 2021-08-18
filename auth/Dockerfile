@@ -17,7 +17,7 @@ COPY pdns.conf /etc/powerdns/pdns.conf
 
 USER pdns
 
-ENV    PDNS_guardian=yes \
+ENV PDNS_guardian=yes \
     PDNS_setuid=pdns \
     PDNS_setgid=pdns \
     PDNS_launch=gmysql
