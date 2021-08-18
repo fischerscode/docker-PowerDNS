@@ -1,13 +1,6 @@
-ARG VERSION=
 FROM powerdns/pdns-auth-45:latest
 
 USER root
-
-# Reusable layer for base update - Should be cached from builder
-RUN apt-get update && apt-get -y dist-upgrade && apt-get clean
-
-# Ensure python3 and jinja2 is present (for startup script), and sqlite3 (for db schema), and tini (for signal management),
-#   and vim (for pdnsutil edit-zone) 
 
 RUN apt update && \
     apt install -y gnupg lsb-release wget python3-pip &&\
@@ -17,6 +10,8 @@ RUN apt update && \
     apt update &&\
     apt install -y mysql-client &&\
     apt clean
+
+RUN rm mysql-apt-config_0.8.18-1_all.deb
 
 COPY pdns.conf /etc/powerdns/pdns.conf
 
