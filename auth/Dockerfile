@@ -1,5 +1,5 @@
 ARG VERSION=
-FROM powerdns/pdns-auth-45:${VERSION}
+FROM powerdns/pdns-auth-45:latest
 
 USER root
 
