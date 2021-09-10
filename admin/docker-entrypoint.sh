@@ -21,7 +21,7 @@ export PDNS_ADMIN_SQLA_DB_HOST PDNS_ADMIN_SQLA_DB_PORT PDNS_ADMIN_SQLA_DB_USER P
 
 # Generate secret key
 [ -f /root/secret-key ] || tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 32 > /root/secret-key || true
-PDNS_ADMIN_SECRET_KEY="'$(cat /root/secret-key)'"
+PDNS_ADMIN_SECRET_KEY="$(cat /root/secret-key)"
 
 export PDNS_ADMIN_SECRET_KEY
 

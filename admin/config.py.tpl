@@ -9,7 +9,7 @@ HSTS_ENABLED = False
 # SAML Authnetication
 SAML_ENABLED = False
 
-{% for key, value in environment('PDNS_ADMIN_') %}{{ key }} = {{ value }}
+{% for key, value in environment('PDNS_ADMIN_') %}{{ key }} = '{{ value }}'
 {% endfor %}
 
 ### DATABASE CONFIG
