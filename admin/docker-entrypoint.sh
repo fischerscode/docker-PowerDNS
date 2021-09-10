@@ -28,7 +28,7 @@ export PDNS_ADMIN_SECRET_KEY
 envtpl < /config.py.tpl > /opt/powerdns-admin/powerdnsadmin/default_config.py
 
 # Initialize DB if needed
-MYSQL_COMMAND='mysql -h $PDNS_ADMIN_SQLA_DB_HOST -P $PDNS_ADMIN_SQLA_DB_PORT -u $PDNS_ADMIN_SQLA_DB_USER -p"$PDNS_ADMIN_SQLA_DB_PASSWORD"'
+MYSQL_COMMAND="mysql -h ${PDNS_ADMIN_SQLA_DB_HOST//\'/} -P ${PDNS_ADMIN_SQLA_DB_PORT//\'/} -u ${PDNS_ADMIN_SQLA_DB_USER//\'/} -p${PDNS_ADMIN_SQLA_DB_PASSWORD//\'/}"
 
 until $MYSQL_COMMAND -e ';' ; do
     >&2 echo 'MySQL is unavailable - sleeping'
