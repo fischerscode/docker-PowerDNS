@@ -1,0 +1,20 @@
+diff --git a/powerdnsadmin/templates/admin_edit_key.html b/powerdnsadmin/templates/admin_edit_key.html
+index f1a33a0..d89cad1 100644
+--- a/powerdnsadmin/templates/admin_edit_key.html
++++ b/powerdnsadmin/templates/admin_edit_key.html
+@@ -59,7 +59,7 @@
+                             <select multiple="multiple" class="form-control" id="key_multi_domain"
+                                 name="key_multi_domain">
+                                 {% for domain in domains %}
+-                                    <option {% if domain in key.domains %}selected{% endif %} value="{{ domain.name }}">{{ domain.name }}</option>
++                                    <option {% if key and domain in key.domains %}selected{% endif %} value="{{ domain.name }}">{{ domain.name }}</option>
+                                 {% endfor %}
+                             </select>
+                         </div>
+@@ -165,4 +165,4 @@
+     </div>
+     <!-- /.modal-dialog -->
+ </div>
+-{% endblock %}
+\ No newline at end of file
++{% endblock %}

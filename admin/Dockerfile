@@ -1,3 +1,15 @@
+FROM fedora:33 as git
+
+RUN dnf -y install git
+
+RUN git clone https://github.com/ngoduykhanh/PowerDNS-Admin /opt/powerdns-admin
+
+WORKDIR /opt/powerdns-admin
+
+COPY api-key.patch /tmp/api-key.patch
+
+RUN git apply /tmp/api-key.patch && rm -rf .git
+
 FROM fedora:33
 
 RUN curl -sSL -o /etc/yum.repos.d/yarn.repo https://dl.yarnpkg.com/rpm/yarn.repo \
@@ -11,10 +23,9 @@ RUN curl -sSL -o /etc/yum.repos.d/yarn.repo https://dl.yarnpkg.com/rpm/yarn.repo
   yarn \
   && dnf clean all
 
-RUN mkdir -p /opt/powerdns-admin \
-  && curl -sSL https://github.com/ngoduykhanh/PowerDNS-Admin/archive/master.tar.gz \
-  | tar -xzC /opt/powerdns-admin --strip 1 \
-  && sed -i '/python-ldap/d' /opt/powerdns-admin/requirements.txt \
+COPY --from=git /opt/powerdns-admin /opt/powerdns-admin
+
+RUN sed -i '/python-ldap/d' /opt/powerdns-admin/requirements.txt \
   && sed -i '/mysqlclient/d' /opt/powerdns-admin/requirements.txt \
   && chown -R root: /opt/powerdns-admin
 
