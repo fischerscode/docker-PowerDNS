@@ -19,9 +19,11 @@ export PDNS_ADMIN_SQLA_DB_HOST PDNS_ADMIN_SQLA_DB_PORT PDNS_ADMIN_SQLA_DB_USER P
 : "${PDNS_API_KEY:=${PDNS_ENV_PDNS_api_key:-}}"
 : "${PDNS_VERSION:=${PDNS_ENV_VERSION:-}}"
 
-# Generate secret key
-[ -f /root/secret-key ] || tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 32 > /root/secret-key || true
-PDNS_ADMIN_SECRET_KEY="$(cat /root/secret-key)"
+if [[ -z "${PDNS_ADMIN_SECRET_KEY}" ]]; then
+    # Generate secret key
+    [ -f /root/secret-key ] || tr -dc _A-Z-a-z-0-9 < /dev/urandom | head -c 32 > /root/secret-key || true
+    PDNS_ADMIN_SECRET_KEY="$(cat /root/secret-key)"
+fi
 
 export PDNS_ADMIN_SECRET_KEY
 
