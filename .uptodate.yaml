@@ -1,0 +1,10 @@
+dependencies:
+  - name: PowerDNS auth
+    type: github
+    currentVersion: auth-4.5.1
+    prefix: auth-
+    repo: "PowerDNS/pdns"
+    isTag: true
+    issueBody: |
+      Update $name from $currentVersion to $latestVersion.
+      [CHANGELOG](https://doc.powerdns.com/authoritative/changelog/)
