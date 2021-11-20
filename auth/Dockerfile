@@ -1,4 +1,4 @@
-FROM powerdns/pdns-auth-45:4.5.1
+FROM powerdns/pdns-auth-45:4.5.2
 
 USER root
 
