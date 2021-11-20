@@ -13,7 +13,6 @@ dependencies:
     currentVersion: v0.2.4
     prefix: v
     repo: "ngoduykhanh/PowerDNS-Admin"
-    isTag: true
     issueBody: |
       Update $name from $currentVersion to $latestVersion.
       [CHANGELOG](https://github.com/ngoduykhanh/PowerDNS-Admin/releases)
