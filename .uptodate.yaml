@@ -1,7 +1,7 @@
 dependencies:
   - name: PowerDNS auth
     type: github
-    currentVersion: auth-4.6.1
+    currentVersion: auth-4.6.2
     prefix: auth-
     repo: "PowerDNS/pdns"
     isTag: true

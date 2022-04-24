@@ -1,4 +1,4 @@
-FROM powerdns/pdns-auth-46:4.6.1
+FROM powerdns/pdns-auth-46:4.6.2
 
 USER root
 
